@@ -528,7 +528,7 @@ minetest.register_node("nether:leaves", {
 	description = "Nether Leaves",
 	drawtype = "plantlike",
 	waving = 1,
-	visual_scale = math.sqrt(math.sqrt(2)),
+	visual_scale = math.sqrt(2) + 0.01,
 	tiles = {"nether_leaves.png"},
 	inventory_image = "nether_leaves.png",
 	wield_image = "nether_leaves.png",
