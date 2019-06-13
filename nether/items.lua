@@ -11,13 +11,23 @@ local function add_more_nodes(name)
 		name = "nether_"..name
 	end
 	local data = minetest.registered_nodes[nd]
-	stairs.register_stair_and_slab(name, nd,
-		data.groups,
-		data.tiles,
-		data.description.." Stair",
-		data.description.." Slab",
-		data.sounds
-	)
+	if stairsplus then
+		stairsplus:register_all(
+			"nether",
+			name,
+			nd,
+			data
+		)
+	else
+		stairs.register_stair_and_slab(
+			name, nd,
+			data.groups,
+			data.tiles,
+			data.description.." Stair",
+			data.description.." Slab",
+			data.sounds
+		)
+	end
 	if add_fence then
 		add_fence({fence_of = nd})
 	end
@@ -161,6 +171,27 @@ minetest.register_node("nether:white", {
 })
 add_more_nodes("white")
 
+-- Glowstone
+minetest.register_node("nether:glowstone", {
+	description = "Glowstone",
+	tiles = {"nether_glowstone.png"},
+	is_ground_content = true,
+	light_source = 14,
+	groups = {cracky = 1,glowstone=1},
+	sounds = default.node_sound_glass_defaults(),
+	--can_dig = function(_, player)
+	--	return digging_allowed(player, 1)
+	--end,
+})
+add_more_nodes("glowstone")
+minetest.register_craftitem("nether:glowstone_crystal",{
+	inventory_image = "nether_glowstone_crystal.png",
+	groups = {glowstone_crystal=1}
+})
+minetest.register_craftitem("nether:glowstone_dust",{
+	inventory_image = "nether_glowstone_dust.png",
+	groups = {glowstone_dust=1}
+})
 
 -- Nether blood
 minetest.register_node("nether:sapling", {
@@ -327,6 +358,8 @@ local function room_for_items(inv)
 	return true
 end
 
+
+-- TODO: Replace with a nether:mushroom instead of another required dependancy.
 local drop_mushroom = minetest.registered_nodes["riesenpilz:nether_shroom"].on_drop
 minetest.override_item("riesenpilz:nether_shroom", {
 	on_drop = function(itemstack, dropper, pos)
@@ -587,7 +620,7 @@ minetest.register_node("nether:dirt_bottom", {
 })
 
 
--- Nether torch
+--[[ Nether torch moved to ./torch.lua
 minetest.register_node("nether:torch", {
 	description = "Nether Torch",
 	drawtype = "torchlike",
@@ -618,7 +651,7 @@ minetest.register_node("nether:torch", {
 	groups = {choppy=2, dig_immediate=3, attached_node=1, hot=3, igniter=1},
 	legacy_wallmounted = true,
 	sounds = default.node_sound_defaults(),
-})
+})]]
 
 local invisible = "nether_transparent.png"
 minetest.register_node("nether:portal", {

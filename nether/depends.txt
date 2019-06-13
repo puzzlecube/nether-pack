@@ -1,9 +1,8 @@
 default
 creative?
-glow
 riesenpilz
 stairs
-vector_extras
+moreblocks?
 fence_registration?
 function_delayer?
 watershed?

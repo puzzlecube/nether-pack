@@ -99,6 +99,15 @@ minetest.register_craft({
 })
 
 minetest.register_craft({
+	output = "nether:glowstone",
+	recipe = {
+		{"nether:glowstone_crystal","nether:glowstone_crystal"},
+		{"nether:glowstone_crystal","nether:glowstone_crystal"}
+	}
+})
+-- TODO: Add optional technic compatibility and register a grinding recipe for dust.
+
+minetest.register_craft({
 	output = "default:furnace",
 	recipe = {
 		{"nether:netherrack_brick", "nether:netherrack_brick", "nether:netherrack_brick"},
@@ -140,6 +149,7 @@ minetest.register_craft({
 minetest.register_craft({
 	output = "nether:torch",
 	recipe = {
+		{"nether:glowstone_crystal"}
 		{"nether:bark"},
 		{"group:stick"},
 	}

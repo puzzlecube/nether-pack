@@ -222,10 +222,10 @@ local function define_contents()
 		diamond = minetest.get_content_id("default:stone_with_diamond"),
 		mese = minetest.get_content_id("default:mese"),
 
-		--https://github.com/Zeg9/minetest-glow
-		glowstone = minetest.get_content_id("glow:stone"),
+		--https://github.com/Zeg9/minetest-glow is no longer required since it appears to be defunct/not working in 5.0.0
+		glowstone = minetest.get_content_id("nether:glowstone"),
 
-		nether_shroom = minetest.get_content_id("riesenpilz:nether_shroom"),
+		nether_shroom = minetest.get_content_id("riesenpilz:nether_shroom"), -- Will also be internalized soon.
 
 		netherrack = minetest.get_content_id("nether:netherrack"),
 		netherrack_tiled = minetest.get_content_id("nether:netherrack_tiled"),
